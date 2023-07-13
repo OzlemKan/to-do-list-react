@@ -1,37 +1,23 @@
-const TodoList = () => {
+import React, { useState } from "react";
+
+export default function TodoList() {
+  const todos = ["todo 1", "todo 2", "todo 3"];
   return (
     <ul
       role="list"
       className="todo-list stack-large stack-exception"
       aria-labelledby="list-heading"
     >
-      <li className="todo stack-small">
-        <div className="c-cb">
-          <input id="todo-0" type="checkbox" defaultChecked={true} />
-          <label className="todo-label" htmlFor="todo-0">
-            Todo 1
-          </label>
-        </div>
-      </li>
-
-      <li className="todo stack-small">
-        <div className="c-cb">
-          <input id="todo-1" type="checkbox" />
-          <label className="todo-label" htmlFor="todo-1">
-            Todo 2
-          </label>
-        </div>
-      </li>
-      <li className="todo stack-small">
-        <div className="c-cb">
-          <input id="todo-2" type="checkbox" />
-          <label className="todo-label" htmlFor="todo-2">
-            Todo 3
-          </label>
-        </div>
-      </li>
+      {todos.map((todo, index) => (
+        <li className="todo stack-small" key={index}>
+          <div className="c-cb">
+            <input id={`todo-${index}`} type="checkbox" />
+            <label className="todo-label" htmlFor={`todo-${index}`}>
+              {todo}
+            </label>
+          </div>
+        </li>
+      ))}
     </ul>
   );
-};
-
-export default TodoList;
+}
